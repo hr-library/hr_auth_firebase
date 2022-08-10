@@ -53,7 +53,7 @@ class UserModel {
         userType: userType ?? this.userType,
         user: user ?? this.user,
         email: email ?? this.email,
-        displayName: displayName ?? displayName,
+        displayName: displayName ?? this.displayName,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         photo: photo ?? this.photo,
         locationStorage: locationStorage ?? this.locationStorage,
