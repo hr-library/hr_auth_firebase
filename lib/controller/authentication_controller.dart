@@ -33,8 +33,8 @@ class AuthenticationController extends GetxController {
       enable: false,
       email: user.email,
       user: user,
-      phoneNumber: user.phoneNumber,
-      displayName: user.displayName,
+      phoneNumber: user.phoneNumber ?? '',
+      displayName: user.displayName ?? '',
       photo: photo,
       locationStorage: locationStorage,
     );
