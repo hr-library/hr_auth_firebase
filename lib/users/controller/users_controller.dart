@@ -26,8 +26,13 @@ class UsersController extends GetxController {
     List<UserModel> list = [];
     list.addAll(usersList.value);
     usersList.value = list;
-    usersList.value.sort((a, b) => a.displayName!.compareTo(b.displayName!));
     await _firestoreUtils.updateUser(newEvent);
+    usersList.value.forEach((element) {
+      print(element.displayName);
+      print(element.uid);
+      print("********************");
+    });
+    usersList.value.sort((a, b) => a.displayName!.compareTo(b.displayName!));
   }
 
   void filterSearchResults(String query) {
