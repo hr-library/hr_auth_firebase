@@ -41,6 +41,11 @@ class HomePageView extends StatelessWidget {
               '${Get.find<AuthenticationController>().currentUserModel.value?.displayName}',
               style: const TextStyle(fontSize: 20),
             ),
+            const SizedBox(height: 20),
+            Text(
+              'is Admin : ${Get.find<AuthenticationController>().isAdmin.value}',
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
       ),

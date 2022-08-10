@@ -6,6 +6,7 @@ class AuthenticationController extends GetxController {
   final UsersController _usersController = Get.put(UsersController());
 
   Rxn<UserModel> currentUserModel = Rxn<UserModel>();
+  RxBool isAdmin = false.obs;
 
   String storageLocation =
       '${GetStorage().read(GetStorageKey.projectKey)}/${GetStorage().read(GetStorageKey.platform)}';
@@ -39,6 +40,7 @@ class AuthenticationController extends GetxController {
     );
     await _firestoreUtils.createUser(newUser);
     currentUserModel.value = newUser;
+    isAdmin.value = newUser.userType == 'admin';
   }
 
   Future<void> afterSignIn(Widget homePage) async {
@@ -64,6 +66,7 @@ class AuthenticationController extends GetxController {
     } else {
       currentUserModel.value = listUser.first;
     }
+    isAdmin.value = currentUserModel.value?.userType == 'admin';
     print('$logTrace currentUserModel : ${currentUserModel.value?.uid}');
   }
 
