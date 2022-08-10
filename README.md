@@ -28,3 +28,6 @@ GetUserStatus status = await getUserStatus();
 
 ## ErrorPage
 - ErrorScaffoldHr
+
+## Value
+Get.find<AuthenticationController>().currentUserModel.value

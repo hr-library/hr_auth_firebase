@@ -45,7 +45,7 @@ Future<void> main() async {
       homePage: HomePageView(),
     );
   } else if (status == GetUserStatus.userAdmin) {
-    initialPage = UsersScaffoldHr();
+    initialPage = const UsersScaffoldHr();
   }
   runApp(MyApp(
     initPage: initialPage,

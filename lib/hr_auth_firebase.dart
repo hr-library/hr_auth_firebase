@@ -13,10 +13,12 @@ import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:getwidget/types/gf_button_type.dart';
-import 'package:hr_auth_firebase/controller/authentication_controller.dart';
 import 'package:hr_auth_firebase/profile/controller/register_controller.dart';
 import 'package:hr_auth_firebase/profile/controller/register_input_controller.dart';
 import 'package:hr_auth_firebase/profile/view/register_view.dart';
+import 'package:hr_auth_firebase/service/firestore_utils.dart';
+import 'package:hr_auth_firebase/service/storage_utils.dart';
+import 'package:hr_auth_firebase/service/utils.dart';
 import 'package:hr_auth_firebase/users/controller/users_controller.dart';
 import 'package:text_field/text_field.dart';
 
@@ -29,6 +31,7 @@ part 'users/view/users_view.dart';
 part 'profile/view/my_profile.dart';
 part 'error/view/error_page.dart';
 part 'profile/view/avatar.dart';
+part 'controller/authentication_controller.dart';
 
 enum GetUserStatus {
   userActivate,

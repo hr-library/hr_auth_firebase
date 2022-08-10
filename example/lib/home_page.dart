@@ -36,6 +36,11 @@ class HomePageView extends StatelessWidget {
                 child: const Text('My Profile')),
             const SizedBox(height: 20),
             AvatarViewHr(),
+            const SizedBox(height: 20),
+            Text(
+              '${Get.find<AuthenticationController>().currentUserModel.value?.displayName}',
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
       ),

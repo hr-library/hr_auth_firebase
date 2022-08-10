@@ -1,15 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import '../hr_auth_firebase.dart';
-import '../model/get_storage_key.dart';
-import '../model/user_model.dart';
-import '../service/firestore_utils.dart';
-import '../service/storage_utils.dart';
-import '../service/utils.dart';
-import '../users/controller/users_controller.dart';
+part of '../../hr_auth_firebase.dart';
 
 class AuthenticationController extends GetxController {
   final FirestoreUtils _firestoreUtils = FirestoreUtils();
@@ -32,7 +21,6 @@ class AuthenticationController extends GetxController {
     String photo = '';
     String locationStorage = '';
     if (user.photoURL != null) {
-      print('****************************$storageLocation');
       photo = await _storageUtils.uploadPicByUrl(
           user.uid, user.photoURL!, storageLocation);
       locationStorage =

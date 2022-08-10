@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hr_auth_firebase/controller/authentication_controller.dart';
 import 'package:hr_auth_firebase/profile/controller/register_input_controller.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../hr_auth_firebase.dart';
 import '../../model/get_storage_key.dart';
 import '../../model/user_model.dart';
 import '../../service/firestore_utils.dart';
 import '../../service/storage_utils.dart';
-import '../view/register_view.dart';
 
 enum NavigationStatus {
   errorPage,
