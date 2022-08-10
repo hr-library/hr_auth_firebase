@@ -52,7 +52,7 @@ class MyProfileViewHr extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        data.photo != null
+        data.photo != null || data.photo!.isEmpty
             ? GFAvatar(
                 size: 120,
                 backgroundImage: NetworkImage(
