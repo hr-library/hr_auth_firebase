@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../hr_auth_firebase.dart';
+import '../model/get_storage_key.dart';
 import '../model/user_model.dart';
 import '../service/firestore_utils.dart';
 import '../service/storage_utils.dart';
@@ -16,6 +18,9 @@ class AuthenticationController extends GetxController {
 
   Rxn<UserModel> currentUserModel = Rxn<UserModel>();
 
+  String storageLocation =
+      '${GetStorage().read(GetStorageKey.projectKey)}${GetStorage().read(GetStorageKey.platform)}';
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -25,11 +30,12 @@ class AuthenticationController extends GetxController {
     User? user = FirebaseAuth.instance.currentUser;
     if (user == null) return;
     String photo = '';
-    String storageLocation = '';
+    String locationStorage = '';
     if (user.photoURL != null) {
-      photo =
-          await _storageUtils.uploadPicByUrl(user.uid, user.photoURL!, 'users');
-      storageLocation = 'gs://hr-test-48e7e.appspot.com/users/${user.uid}';
+      photo = await _storageUtils.uploadPicByUrl(
+          user.uid, user.photoURL!, locationStorage);
+      locationStorage =
+          '${GetStorage().read(GetStorageKey.storageKey)}users/$storageLocation/${user.uid}';
     }
     UserModel newUser = UserModel(
       uid: user.uid,
@@ -40,7 +46,7 @@ class AuthenticationController extends GetxController {
       phoneNumber: user.phoneNumber,
       displayName: user.displayName,
       photo: photo,
-      locationStorage: storageLocation,
+      locationStorage: locationStorage,
     );
     await _firestoreUtils.createUser(newUser);
     currentUserModel.value = newUser;

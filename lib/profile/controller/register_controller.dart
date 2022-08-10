@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hr_auth_firebase/controller/authentication_controller.dart';
 import 'package:hr_auth_firebase/profile/controller/register_input_controller.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../model/get_storage_key.dart';
 import '../../model/user_model.dart';
 import '../../service/firestore_utils.dart';
 import '../../service/storage_utils.dart';
@@ -34,6 +36,8 @@ class RegisterController extends GetxController {
   RxString phoneNumberErrorMessage = ''.obs;
 
   Rx<NavigationStatus> navigationStatus = NavigationStatus.signInPage.obs;
+  String storageLocation =
+      '${GetStorage().read(GetStorageKey.projectKey)}${GetStorage().read(GetStorageKey.platform)}';
 
   @override
   Future<void> onInit() async {
@@ -91,15 +95,15 @@ class RegisterController extends GetxController {
     UserModel data = _authenticationController.currentUserModel.value!;
     late UserModel newData;
     if (pickedFile != null) {
-      String photo =
-          await _storageUtils.uploadPicByFile(data.uid!, pickedFile!, 'users');
-      String storageLocation =
-          'gs://hr-test-48e7e.appspot.com/users/${data.uid}';
+      String photo = await _storageUtils.uploadPicByFile(
+          data.uid!, pickedFile!, storageLocation);
+      String locationStorage =
+          '${GetStorage().read(GetStorageKey.storageKey)}users/$storageLocation/${data.uid}';
       newData = data.copyWith(
         displayName: _registerInputController.displayNameController.text,
         phoneNumber: _registerInputController.phoneNumberController.text,
         photo: photo,
-        locationStorage: storageLocation,
+        locationStorage: locationStorage,
       );
     } else {
       newData = data.copyWith(

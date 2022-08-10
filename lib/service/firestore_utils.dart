@@ -11,7 +11,7 @@ class FirestoreUtils {
   static final FirebaseFirestore _client = FirebaseFirestore.instance;
   final collectionUsers = _client
       .collection("users")
-      .doc('gbuv')
+      .doc(GetStorage().read(GetStorageKey.projectKey))
       .collection(GetStorage().read(GetStorageKey.platform));
 
   //USERS

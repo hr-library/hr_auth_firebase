@@ -9,9 +9,8 @@ class LoginViewHr extends StatelessWidget {
 
   final providerConfigs = [
     const EmailProviderConfiguration(),
-    const GoogleProviderConfiguration(
-        clientId:
-            '513998380685-m9h9mi0sjcmsfn4k6ntuen8ai8848n85.apps.googleusercontent.com'),
+    GoogleProviderConfiguration(
+        clientId: GetStorage().read(GetStorageKey.googleClientId)),
   ];
   final AuthenticationController _authenticationController =
       Get.put(AuthenticationController());

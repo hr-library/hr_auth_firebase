@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutterfire_ui/auth.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
@@ -19,6 +20,7 @@ import 'package:hr_auth_firebase/profile/view/register_view.dart';
 import 'package:hr_auth_firebase/users/controller/users_controller.dart';
 import 'package:text_field/text_field.dart';
 
+import 'model/get_storage_key.dart';
 import 'model/user_model.dart';
 
 part 'login/view/login_view.dart';
@@ -33,6 +35,22 @@ enum GetUserStatus {
   userAdmin,
   noUser,
   userNotActivate,
+}
+
+void initConfig({
+  required String projectKey,
+  required String storageKey,
+  required String googleClientId,
+}) {
+  if (GetStorage().read(GetStorageKey.projectKey) == null) {
+    GetStorage().write(GetStorageKey.projectKey, projectKey);
+  }
+  if (GetStorage().read(GetStorageKey.storageKey) == null) {
+    GetStorage().write(GetStorageKey.storageKey, storageKey);
+  }
+  if (GetStorage().read(GetStorageKey.googleClientId) == null) {
+    GetStorage().write(GetStorageKey.googleClientId, googleClientId);
+  }
 }
 
 Future<GetUserStatus> getUserStatus() async {
