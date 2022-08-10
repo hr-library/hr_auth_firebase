@@ -37,7 +37,7 @@ class RegisterController extends GetxController {
 
   Rx<NavigationStatus> navigationStatus = NavigationStatus.signInPage.obs;
   String storageLocation =
-      '${GetStorage().read(GetStorageKey.projectKey)}${GetStorage().read(GetStorageKey.platform)}';
+      '${GetStorage().read(GetStorageKey.projectKey)}/${GetStorage().read(GetStorageKey.platform)}';
 
   @override
   Future<void> onInit() async {
@@ -98,7 +98,7 @@ class RegisterController extends GetxController {
       String photo = await _storageUtils.uploadPicByFile(
           data.uid!, pickedFile!, storageLocation);
       String locationStorage =
-          '${GetStorage().read(GetStorageKey.storageKey)}users/$storageLocation/${data.uid}';
+          '${GetStorage().read(GetStorageKey.storageKey)}$storageLocation/${data.uid}';
       newData = data.copyWith(
         displayName: _registerInputController.displayNameController.text,
         phoneNumber: _registerInputController.phoneNumberController.text,

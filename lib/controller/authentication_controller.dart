@@ -19,7 +19,7 @@ class AuthenticationController extends GetxController {
   Rxn<UserModel> currentUserModel = Rxn<UserModel>();
 
   String storageLocation =
-      '${GetStorage().read(GetStorageKey.projectKey)}${GetStorage().read(GetStorageKey.platform)}';
+      '${GetStorage().read(GetStorageKey.projectKey)}/${GetStorage().read(GetStorageKey.platform)}';
 
   @override
   Future<void> onInit() async {
@@ -32,10 +32,11 @@ class AuthenticationController extends GetxController {
     String photo = '';
     String locationStorage = '';
     if (user.photoURL != null) {
+      print('****************************$storageLocation');
       photo = await _storageUtils.uploadPicByUrl(
-          user.uid, user.photoURL!, locationStorage);
+          user.uid, user.photoURL!, storageLocation);
       locationStorage =
-          '${GetStorage().read(GetStorageKey.storageKey)}users/$storageLocation/${user.uid}';
+          '${GetStorage().read(GetStorageKey.storageKey)}$storageLocation/${user.uid}';
     }
     UserModel newUser = UserModel(
       uid: user.uid,
