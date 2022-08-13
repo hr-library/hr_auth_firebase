@@ -138,7 +138,7 @@ class RegisterView extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 50.0),
               child: IconButton(
                 icon: const Icon(
                   Icons.photo,
@@ -151,7 +151,7 @@ class RegisterView extends StatelessWidget {
             ),
             if (!kIsWeb)
               Padding(
-                padding: const EdgeInsets.only(top: 60.0),
+                padding: const EdgeInsets.only(top: 50.0),
                 child: IconButton(
                   icon: const Icon(
                     Icons.photo_camera,
