@@ -22,4 +22,11 @@ class SignOut {
     await FirebaseAuth.instance.signOut();
     Get.offAll(LoginViewHr(homePage: homePage));
   }
+
+  void signOutWithAction({
+    required void action,
+  }) async {
+    await FirebaseAuth.instance.signOut();
+    action;
+  }
 }
