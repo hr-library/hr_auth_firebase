@@ -116,8 +116,8 @@ class RegisterView extends StatelessWidget {
                 radius: 94,
                 child: ClipOval(
                   child: Obx(() => SizedBox(
-                      width: 180.0,
-                      height: 180.0,
+                      width: 170.0,
+                      height: 170.0,
                       child: _authenticationInputController.image.value.isEmpty
                           ? const Icon(
                               Icons.person,
@@ -142,7 +142,7 @@ class RegisterView extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(
                   Icons.photo,
-                  size: 30.0,
+                  size: 25.0,
                 ),
                 onPressed: () async {
                   await _registerController.getImageFromFile();
@@ -155,7 +155,7 @@ class RegisterView extends StatelessWidget {
                 child: IconButton(
                   icon: const Icon(
                     Icons.photo_camera,
-                    size: 30.0,
+                    size: 25.0,
                   ),
                   onPressed: () async {
                     await _registerController.getImageFromCamera();
