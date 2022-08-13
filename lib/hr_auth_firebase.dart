@@ -1,7 +1,5 @@
 library hr_auth_firebase;
 
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_image/firebase_image.dart';
 import 'package:flutter/foundation.dart';
