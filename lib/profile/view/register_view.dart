@@ -137,30 +137,24 @@ class RegisterView extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: IconButton(
+            IconButton(
+              icon: const Icon(
+                Icons.photo,
+                size: 25.0,
+              ),
+              onPressed: () async {
+                await _registerController.getImageFromFile();
+              },
+            ),
+            if (!kIsWeb)
+              IconButton(
                 icon: const Icon(
-                  Icons.photo,
+                  Icons.photo_camera,
                   size: 25.0,
                 ),
                 onPressed: () async {
-                  await _registerController.getImageFromFile();
+                  await _registerController.getImageFromCamera();
                 },
-              ),
-            ),
-            if (!kIsWeb)
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.photo_camera,
-                    size: 25.0,
-                  ),
-                  onPressed: () async {
-                    await _registerController.getImageFromCamera();
-                  },
-                ),
               ),
           ],
         ),
