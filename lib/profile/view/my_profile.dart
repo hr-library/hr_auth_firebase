@@ -52,21 +52,15 @@ class MyProfileViewHr extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        data.photo!.isNotEmpty
-            ? GFAvatar(
-                size: 120,
-                backgroundImage: NetworkImage(
-                  data.photo!,
-                ),
-              )
-            : const GFAvatar(
-                size: 120,
-                child: Icon(
-                  Icons.person,
-                  size: 50,
-                ),
-              ),
+        const GFAvatar(
+          size: 120,
+          child: Icon(
+            Icons.person,
+            size: 50,
+          ),
+        ),
         _infoWidget(data.displayName ?? ''),
+        _infoWidget('${data.photo}'),
         _infoWidget(data.email ?? ''),
         _infoWidget(data.phoneNumber ?? ''),
         const SizedBox(height: 30.0),
