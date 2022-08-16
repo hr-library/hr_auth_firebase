@@ -46,6 +46,7 @@ class AuthenticationController extends GetxController {
   Future<void> afterSignIn(Widget homePage) async {
     GetUserStatus status = await getUserStatus();
     print('$logTrace status : $status');
+    Get.forceAppUpdate();
     if (status == GetUserStatus.userNotActivate) {
       Get.offAll(ErrorScaffoldHr(
         homePage: homePage,
