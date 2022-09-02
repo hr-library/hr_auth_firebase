@@ -2,8 +2,10 @@ part of '../../../../hr_auth_firebase.dart';
 
 class LoginViewHr extends StatelessWidget {
   final Widget homePage;
+  List<FlutterFireUIAction> actions;
   LoginViewHr({
     required this.homePage,
+    this.actions = const [],
     Key? key,
   }) : super(key: key);
 
@@ -19,11 +21,13 @@ class LoginViewHr extends StatelessWidget {
   Widget build(BuildContext context) {
     return SignInScreen(
       providerConfigs: providerConfigs,
-      actions: [
-        AuthStateChangeAction<SignedIn>((context, state) async {
-          await _authenticationController.afterSignIn(homePage);
-        }),
-      ],
+      actions: actions.isEmpty
+          ? [
+              AuthStateChangeAction<SignedIn>((context, state) async {
+                await _authenticationController.afterSignIn(homePage);
+              }),
+            ]
+          : actions,
     );
   }
 }
