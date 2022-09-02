@@ -26,14 +26,13 @@ class ErrorViewHr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 50),
+    return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Votre compte est bloqué',
+            "Votre compte n' a pas d' accès à cette application",
             textAlign: TextAlign.center,
           ),
           const SizedBox(
