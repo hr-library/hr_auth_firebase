@@ -3,8 +3,10 @@ part of '../../../../hr_auth_firebase.dart';
 class ErrorScaffoldHr extends StatelessWidget {
   final Widget homePage;
   final bool verifyAdmin;
+  final String appTitle;
   const ErrorScaffoldHr({
     required this.homePage,
+    required this.appTitle,
     this.verifyAdmin = false,
     Key? key,
   }) : super(key: key);
@@ -14,6 +16,8 @@ class ErrorScaffoldHr extends StatelessWidget {
     return Scaffold(
       body: ErrorViewHr(
         homePage: homePage,
+        verifyAdmin: verifyAdmin,
+        appTitle: appTitle,
       ),
     );
   }
@@ -21,8 +25,12 @@ class ErrorScaffoldHr extends StatelessWidget {
 
 class ErrorViewHr extends StatelessWidget {
   final Widget homePage;
+  final String appTitle;
+  final bool verifyAdmin;
   const ErrorViewHr({
     required this.homePage,
+    required this.appTitle,
+    this.verifyAdmin = false,
     Key? key,
   }) : super(key: key);
 
@@ -50,7 +58,11 @@ class ErrorViewHr extends StatelessWidget {
           GFButton(
             onPressed: () {
               Get.offAll(
-                LoginViewHr(homePage: homePage),
+                LoginViewHr(
+                  homePage: homePage,
+                  verifyAdmin: verifyAdmin,
+                  appTitle: appTitle,
+                ),
               );
             },
             text: 'Réessayer',

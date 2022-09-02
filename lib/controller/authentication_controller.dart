@@ -43,7 +43,8 @@ class AuthenticationController extends GetxController {
     isAdmin.value = newUser.userType == 'admin';
   }
 
-  Future<void> afterSignIn(Widget homePage, bool verifyAdmin) async {
+  Future<void> afterSignIn(
+      Widget homePage, bool verifyAdmin, String appTitle) async {
     GetUserStatus status = await getUserStatus();
     print('$logTrace status : $status');
     Get.forceAppUpdate();
@@ -51,6 +52,7 @@ class AuthenticationController extends GetxController {
       Get.offAll(ErrorScaffoldHr(
         homePage: homePage,
         verifyAdmin: verifyAdmin,
+        appTitle: appTitle,
       ));
     } else {
       Get.offAll(homePage);
@@ -58,7 +60,7 @@ class AuthenticationController extends GetxController {
   }
 
   Future<void> afterSignInAndVerifyAdmin(
-      Widget homePage, bool verifyAdmin) async {
+      Widget homePage, bool verifyAdmin, String appTitle) async {
     GetUserStatus status = await getUserStatus();
     print('$logTrace status : $status');
     if (!kIsWeb) {
@@ -69,6 +71,7 @@ class AuthenticationController extends GetxController {
           Get.offAll(ErrorScaffoldHr(
             homePage: homePage,
             verifyAdmin: verifyAdmin,
+            appTitle: appTitle,
           ));
           return;
         }
@@ -79,6 +82,7 @@ class AuthenticationController extends GetxController {
       Get.offAll(ErrorScaffoldHr(
         homePage: homePage,
         verifyAdmin: verifyAdmin,
+        appTitle: appTitle,
       ));
     } else {
       Get.offAll(homePage);
