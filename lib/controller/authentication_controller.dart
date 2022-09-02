@@ -56,6 +56,31 @@ class AuthenticationController extends GetxController {
     }
   }
 
+  Future<void> afterSignInAndVerifyAdmin(Widget homePage) async {
+    GetUserStatus status = await getUserStatus();
+    print('$logTrace status : $status');
+    if (!kIsWeb) {
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      String packageName = packageInfo.packageName;
+      if (packageName.contains('admin')) {
+        if (status != GetUserStatus.userAdmin) {
+          Get.offAll(ErrorScaffoldHr(
+            homePage: homePage,
+          ));
+          return;
+        }
+      }
+    }
+    Get.forceAppUpdate();
+    if (status == GetUserStatus.userNotActivate) {
+      Get.offAll(ErrorScaffoldHr(
+        homePage: homePage,
+      ));
+    } else {
+      Get.offAll(homePage);
+    }
+  }
+
   Future<void> getUser() async {
     if (FirebaseAuth.instance.currentUser?.uid == null) return;
     List<UserModel> listUser = _usersController.usersListInit

@@ -20,6 +20,7 @@ import 'package:hr_auth_firebase/service/firestore_utils.dart';
 import 'package:hr_auth_firebase/service/storage_utils.dart';
 import 'package:hr_auth_firebase/service/utils.dart';
 import 'package:hr_auth_firebase/users/controller/users_controller.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:text_field/text_field.dart';
 
 import 'model/get_storage_key.dart';

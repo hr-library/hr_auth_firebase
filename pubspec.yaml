@@ -17,6 +17,7 @@ dependencies:
   fluttertoast: ^8.0.9
   get_storage: ^2.0.3
   image_picker: 0.7.4
+  package_info_plus: ^1.0.3
 
   flutterfire_ui: ^0.4.3+4
   firebase_auth: ^3.4.2
