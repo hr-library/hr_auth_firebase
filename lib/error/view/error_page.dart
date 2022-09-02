@@ -2,8 +2,10 @@ part of '../../../../hr_auth_firebase.dart';
 
 class ErrorScaffoldHr extends StatelessWidget {
   final Widget homePage;
+  final bool verifyAdmin;
   const ErrorScaffoldHr({
     required this.homePage,
+    this.verifyAdmin = false,
     Key? key,
   }) : super(key: key);
 
