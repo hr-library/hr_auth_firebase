@@ -43,45 +43,13 @@ class AuthenticationController extends GetxController {
     isAdmin.value = newUser.userType == 'admin';
   }
 
-  Future<void> afterSignIn(
-      Widget homePage, bool verifyAdmin, String appTitle) async {
+  Future<void> afterSignIn(Widget homePage, String appTitle) async {
     GetUserStatus status = await getUserStatus();
     print('$logTrace status : $status');
     Get.forceAppUpdate();
     if (status == GetUserStatus.userNotActivate) {
       Get.offAll(ErrorScaffoldHr(
         homePage: homePage,
-        verifyAdmin: verifyAdmin,
-        appTitle: appTitle,
-      ));
-    } else {
-      Get.offAll(homePage);
-    }
-  }
-
-  Future<void> afterSignInAndVerifyAdmin(
-      Widget homePage, bool verifyAdmin, String appTitle) async {
-    GetUserStatus status = await getUserStatus();
-    print('$logTrace status : $status');
-    if (!kIsWeb) {
-      PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      String packageName = packageInfo.packageName;
-      if (packageName.contains('admin')) {
-        if (status != GetUserStatus.userAdmin) {
-          Get.offAll(ErrorScaffoldHr(
-            homePage: homePage,
-            verifyAdmin: verifyAdmin,
-            appTitle: appTitle,
-          ));
-          return;
-        }
-      }
-    }
-    Get.forceAppUpdate();
-    if (status == GetUserStatus.userNotActivate) {
-      Get.offAll(ErrorScaffoldHr(
-        homePage: homePage,
-        verifyAdmin: verifyAdmin,
         appTitle: appTitle,
       ));
     } else {

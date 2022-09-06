@@ -3,11 +3,9 @@ part of '../../../../hr_auth_firebase.dart';
 class LoginViewHr extends StatelessWidget {
   final Widget homePage;
   final String appTitle;
-  final bool verifyAdmin;
   LoginViewHr({
     required this.homePage,
     required this.appTitle,
-    this.verifyAdmin = false,
     Key? key,
   }) : super(key: key);
 
@@ -35,19 +33,10 @@ class LoginViewHr extends StatelessWidget {
       },
       actions: [
         AuthStateChangeAction<SignedIn>((context, state) async {
-          if (verifyAdmin) {
-            await _authenticationController.afterSignInAndVerifyAdmin(
-              homePage,
-              verifyAdmin,
-              appTitle,
-            );
-          } else {
-            await _authenticationController.afterSignIn(
-              homePage,
-              verifyAdmin,
-              appTitle,
-            );
-          }
+          await _authenticationController.afterSignIn(
+            homePage,
+            appTitle,
+          );
         }),
       ],
     );
