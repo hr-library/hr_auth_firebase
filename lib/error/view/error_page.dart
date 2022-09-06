@@ -2,10 +2,8 @@ part of '../../../../hr_auth_firebase.dart';
 
 class ErrorScaffoldHr extends StatelessWidget {
   final Widget homePage;
-  final String appTitle;
   const ErrorScaffoldHr({
     required this.homePage,
-    required this.appTitle,
     Key? key,
   }) : super(key: key);
 
@@ -14,7 +12,6 @@ class ErrorScaffoldHr extends StatelessWidget {
     return Scaffold(
       body: ErrorViewHr(
         homePage: homePage,
-        appTitle: appTitle,
       ),
     );
   }
@@ -22,10 +19,8 @@ class ErrorScaffoldHr extends StatelessWidget {
 
 class ErrorViewHr extends StatelessWidget {
   final Widget homePage;
-  final String appTitle;
   const ErrorViewHr({
     required this.homePage,
-    required this.appTitle,
     Key? key,
   }) : super(key: key);
 
@@ -55,7 +50,6 @@ class ErrorViewHr extends StatelessWidget {
               Get.offAll(
                 LoginViewHr(
                   homePage: homePage,
-                  appTitle: appTitle,
                 ),
               );
             },

@@ -39,14 +39,12 @@ Future<void> main() async {
   print('$logTrace status : $status');
   Widget initialPage = LoginViewHr(
     homePage: const HomePageView(),
-    appTitle: 'HR app',
   );
   if (status == GetUserStatus.userActivate) {
     initialPage = const HomePageView();
   } else if (status == GetUserStatus.userNotActivate) {
     initialPage = const ErrorScaffoldHr(
       homePage: HomePageView(),
-      appTitle: 'HR app',
     );
   } else if (status == GetUserStatus.userAdmin) {
     initialPage = const UsersScaffoldHr();
@@ -70,7 +68,6 @@ class MyApp extends StatelessWidget {
       home: FirebaseAuth.instance.currentUser == null
           ? LoginViewHr(
               homePage: const HomePageView(),
-              appTitle: 'HR app',
             )
           : const HomePageView(),
     );

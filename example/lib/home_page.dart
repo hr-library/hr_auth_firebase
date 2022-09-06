@@ -15,7 +15,6 @@ class HomePageView extends StatelessWidget {
         actions: const [
           SignOutIconHr(
             homePage: HomePageView(),
-            appTitle: 'HR app',
           ),
         ],
       ),

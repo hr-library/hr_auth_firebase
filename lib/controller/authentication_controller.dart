@@ -43,14 +43,13 @@ class AuthenticationController extends GetxController {
     isAdmin.value = newUser.userType == 'admin';
   }
 
-  Future<void> afterSignIn(Widget homePage, String appTitle) async {
+  Future<void> afterSignIn(Widget homePage) async {
     GetUserStatus status = await getUserStatus();
     print('$logTrace status : $status');
     Get.forceAppUpdate();
     if (status == GetUserStatus.userNotActivate) {
       Get.offAll(ErrorScaffoldHr(
         homePage: homePage,
-        appTitle: appTitle,
       ));
     } else {
       Get.offAll(homePage);
