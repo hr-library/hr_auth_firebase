@@ -31,6 +31,12 @@ class ErrorViewHr extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Lottie.network(
+            'https://assets9.lottiefiles.com/packages/lf20_0pgmwzt3.json',
+          ),
+          const SizedBox(
+            height: 40,
+          ),
           const Text(
             "Votre compte n' a pas d' accès à cette application",
             textAlign: TextAlign.center,

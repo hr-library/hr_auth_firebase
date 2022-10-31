@@ -19,6 +19,11 @@ class LoginViewHr extends StatelessWidget {
   Widget build(BuildContext context) {
     return SignInScreen(
       providerConfigs: providerConfigs,
+      subtitleBuilder: (context, provider) {
+        return Lottie.network(
+          'https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json',
+        );
+      },
       actions: [
         AuthStateChangeAction<SignedIn>((context, state) async {
           await _authenticationController.afterSignIn(
